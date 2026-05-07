@@ -209,6 +209,10 @@ class BookStore:
         discount_amount = total_amount * (1 - discount_rate)
         final_amount = total_amount - discount_amount
         
+        # Round to 2 decimal places to avoid floating point precision issues
+        discount_amount = round(discount_amount, 2)
+        final_amount = round(final_amount, 2)
+        
         # Deduct Stock
         for item in cart:
             book = self.get_book(item.isbn)
